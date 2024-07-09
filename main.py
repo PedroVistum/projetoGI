@@ -9,7 +9,7 @@ from time import sleep
 
 # Connect to MySQL database
 cnx = mysql.connector.connect(
-    user="root", password="Pv831842@", host="193.123.127.248", database="stgcopy"
+    user="root", password="831842", host="localhost", database="stgup"
 )
 
 # Create a cursor object to execute queries

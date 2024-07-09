@@ -1,19 +1,24 @@
 import os, glob
 import zipfile
 from time import sleep
-import csv, pypyodbc
+import csv, pyodbc
 from fpdf import FPDF
 from re import A
 
-MDB = r'C:\\Users\\ppvve\\projetoGi\\backendPythonPdf\\stg.mdb'
+MDB = r'/home/hydraangel/projetoGI/stg.mdb'
+DRV = '{Microsoft Access Driver (*.mdb)}'
+PWD = 'pw'
 
-conn_str = (
-    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=' + MDB + ';'
-)
-
-con = pypyodbc.connect(conn_str)
+# connect to db
+con = pyodbc.connect('DRIVER={};DBQ={};PWD={}'.format(DRV,MDB,PWD))
 cur = con.cursor()
+#conn_str = (
+#    r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
+#    r'DBQ=' + MDB + ';'
+#)
+
+#con = pypyodbc.connect(conn_str)
+#cur = con.cursor()
 class PDF(FPDF):
     def __init__(self, nome_aluno, notas):
         super().__init__()
